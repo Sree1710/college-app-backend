@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const Cors = require('cors')
 const mongoose = require('mongoose')
 const studentModel = require('./studentModel')
+const examModel = require('./examModel')
 
 const app = express()
 app.use(bodyParser.json())
@@ -38,6 +39,19 @@ app.post("/admaddstud", async (request, response) => {
         response.json({"status":"error"})
     }
 })
+
+app.post("/admaddmark",async(request,response)=>{
+    let data=request.body
+    const mark= new examModel(data)
+    let result= await mark.save()
+    if (result.examName!="") {
+        response.json({"status":"success"})
+    } else {
+        response.json({"status":"error"})
+    }
+})
+
+
 
 
 
