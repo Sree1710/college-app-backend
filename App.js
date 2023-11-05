@@ -51,14 +51,11 @@ app.post("/admaddmark",async(request,response)=>{
     }
 })
 
-
-
-
-
-
-
-
-
+app.post("/viewstudprofile",async(request,response)=>{
+    let data=request.body
+    let result=await studentModel.find(data)
+    response.json(result)
+})
 
 
 
