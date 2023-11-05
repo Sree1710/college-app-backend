@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const Cors = require('cors')
 const mongoose = require('mongoose')
 const studentModel = require('./studentModel')
+const examModel = require('./examModel')
 
 const app = express()
 app.use(bodyParser.json())
@@ -38,6 +39,9 @@ app.post("/admaddstud", async (request, response) => {
         response.json({"status":"error"})
     }
 })
+
+
+
 
 
 
