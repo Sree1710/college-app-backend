@@ -57,7 +57,11 @@ app.post("/viewstudprofile",async(request,response)=>{
     response.json(result)
 })
 
-
+app.post("/viewstudmark",async(request,response)=>{
+    let data=request.body
+    let result=await examModel.find(data)
+    response.json(result)
+})
 
 
 
