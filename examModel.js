@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const examModel=mongoose.model("exams",mongoose.Schema(
     {
+        studId:String,
         examName:{type:String,required:true},
         examSubOne:String,
         examMarkOne:String,
