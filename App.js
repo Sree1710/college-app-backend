@@ -40,6 +40,16 @@ app.post("/admaddstud", async (request, response) => {
     }
 })
 
+app.post("/admaddmark",async(request,response)=>{
+    let data=request.body
+    const mark= new examModel(data)
+    let result= await mark.save()
+    if (result.examName!="") {
+        response.json({"status":"success"})
+    } else {
+        response.json({"status":"error"})
+    }
+})
 
 
 
