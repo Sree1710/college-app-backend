@@ -34,7 +34,7 @@ app.post("/admaddstud", async (request, response) => {
     const student = new studentModel(data)
     let result=await student.save()
     if (result.studName!="") {
-        response.json({"status":"success"})
+        response.json({"status":"success","data":result[0]})
     } else {
         response.json({"status":"error"})
     }
