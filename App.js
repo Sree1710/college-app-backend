@@ -93,10 +93,10 @@ app.post("/admaddmark", async (request, response) => {
         if (error) {
             response.json({"status":"Unauthorized User!!"})
         } else {
-            if (result.examName != "") {
+            if (result.studName!="") {
                 response.json({ "status": "success" })
             } else {
-                response.json({ "status": "error" })
+                response.json({ "status": "error"})
             }
         }
     })
@@ -104,9 +104,9 @@ app.post("/admaddmark", async (request, response) => {
 })
 
 app.post("/viewstudprofile", async (request, response) => {
-    let data = request.body
-    let token = data.token
-    let result = await studentModel.find(data)
+    let data = request.body._id
+    let token = request.body.token
+    let result = await studentModel.find({"_id":data})
     jwt.verify(token,"collegeApp",(error,decoded)=>{
         if (decoded) {
             response.json(result)
@@ -118,9 +118,9 @@ app.post("/viewstudprofile", async (request, response) => {
 })
 
 app.post("/viewstudmark", async (request, response) => {
-    let data = request.body
-    let token =data.token
-    let result = await examModel.find(data)
+    let data = request.body.stud_id
+    let token =request.body.token
+    let result = await examModel.find({"stud_id":data})
     jwt.verify(token,"collegeApp",(error,decoded)=>{
         if (decoded) {
             response.json(result) 
